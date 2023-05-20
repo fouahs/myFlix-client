@@ -12,14 +12,6 @@ export const LoginView = () => {
       Password: password
     };
 
-    if (data.user) {
-      localStorage.setItem("user", JSON.stringify(data.user));
-      localStorage.setItem("token", data.token);
-      onLoggedIn(data.user, data.token);
-    } else {
-      alert("No such user");
-    }
-
     fetch("https://movie-api-xy68.onrender.com/login", {
       method: "POST",
       headers: {
@@ -31,6 +23,8 @@ export const LoginView = () => {
       .then((data) => {
         console.log("Login response: ", data);
         if (data.user) {
+          localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
         } else {
           alert("No such user");
