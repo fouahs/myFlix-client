@@ -4,7 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view"
 import { SignupView } from "../signup-view/signup-view"
 
-export const LoginView = ({ onLoggedIn }) => {
+export const MainView = ({ onLoggedIn }) => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
@@ -21,10 +21,19 @@ export const LoginView = ({ onLoggedIn }) => {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => response.json())
-      .then((movies) => {
-        setMovies(movies);
-      });
-  }, [token]);
+      .then((data) => {
+        const moviesFromApi = data.map((movie) => {
+          return {
+            id: movie._id,
+            title: movie.Title,
+            director: movie.Director.Name,
+            genre: movie.Genre.Name
+          }
+        });
+
+        setMovies(moviesFromApi);
+        })
+  }, [token])
 
   if (!user) {
     return (
