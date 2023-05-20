@@ -1,37 +1,57 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view"
 
-export const MainView = () => {
+export const LoginView = ({ onLoggedIn }) => {
   const [movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("https://movie-api-xy68.onrender.com/movies")
-      .then((response) => response.json())
-      .then((data) => {
-        const moviesFromApi = data.map(movie => {
-          return {
-            id: movie._id,
-            title: movie.Title,
-            director: movie.Director.Name,
-            genre: movie.Genre.Name
-          };
-        });
+    if (!token) {
+      return;
+    }
 
-        setMovies(moviesFromApi);
+    fetch("https://movie-api-xy68.onrender.com/movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then((response) => response.json())
+      .then((movies) => {
+        setMovies(movies);
       });
-  }, []);
+  }, [token]);
+
+  if (!user) {
+    return (
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
+    );
+  }
 
   if (selectedMovie) {
     return (
+      <div>
         <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+      </div>
     );
   }
 
   if (movies.length === 0) {
-    return <div>The list is empty!</div>;
+    return (
+      <div>
+        return <div>The list is empty!</div>;
+        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+      </div>
+    );
   }
 
   return (
@@ -45,6 +65,7 @@ export const MainView = () => {
           }}
         />
       ))}
+      <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
     </div>
   );
 
