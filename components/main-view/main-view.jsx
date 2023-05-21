@@ -24,6 +24,7 @@ export const MainView = ({ onLoggedIn }) => {
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
           return {
+            image: movie.Image,
             id: movie._id,
             title: movie.Title,
             director: movie.Director.Name,
