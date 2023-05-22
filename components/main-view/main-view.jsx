@@ -3,7 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import { Button, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "./main-view.scss";
 
 export const MainView = ({ onLoggedIn }) => {
@@ -53,13 +53,13 @@ export const MainView = ({ onLoggedIn }) => {
         <>
           <Col md={8}>
             <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-            <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }} className="logout-button">Logout</Button>
+            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }} className="logout-button">Logout</button>
           </Col>
         </>
       ) : movies.length === 0 ? (
         <>
           <div>The list is empty!</div>;
-          <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }} className="logout-button">Logout</Button>
+          <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }} className="logout-button">Logout</button>
         </>
       ) : (
         <>
@@ -73,7 +73,7 @@ export const MainView = ({ onLoggedIn }) => {
               />
             </Col>
           ))}
-          <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }} className="logout-button">Logout</Button>
+          <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }} className="logout-button">Logout</button>
         </>
       )}
     </Row>
