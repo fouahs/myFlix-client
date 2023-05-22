@@ -64,13 +64,14 @@ export const MainView = ({ onLoggedIn }) => {
       ) : (
         <>
           {movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              onMovieClick={(newSelectedMovie) => {
-                setSelectedMovie(newSelectedMovie);
-              }}
-            />
+            <Col className="mb-5" key={movie.id} md={3}>
+              <MovieCard
+                movie={movie}
+                onMovieClick={(newSelectedMovie) => {
+                  setSelectedMovie(newSelectedMovie);
+                }}
+              />
+            </Col>
           ))}
           <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }} className="logout-button">Logout</Button>
         </>
