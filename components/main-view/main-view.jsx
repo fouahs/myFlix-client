@@ -83,20 +83,6 @@ export const MainView = ({ onLoggedIn }) => {
             }
           />
           <Route
-            path="/profile"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={8}>
-                    <ProfileView />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
             path="/movies/:movieId"
             element={
               <>
