@@ -1,7 +1,7 @@
 import "./movie-view.scss";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Row, Button, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 export const MovieView = ({ user, token, movies, updateUser }) => {
