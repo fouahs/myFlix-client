@@ -120,7 +120,7 @@ export const MainView = ({ onLoggedIn }) => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} />
+                    <MovieView movies={movies} user={user} token={token} updateUser={updateUser}/>
                   </Col>
                 )}
               </>
