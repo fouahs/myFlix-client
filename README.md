@@ -51,7 +51,7 @@ Signup view
 
 ● Allows existing users to deregister
 
-### Languages and Tools
+## Languages and Tools
 
 ● HTML
 
