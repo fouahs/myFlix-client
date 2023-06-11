@@ -50,3 +50,19 @@ Signup view
 ● Allows users to remove a movie from their list of favorites
 
 ● Allows existing users to deregister
+
+### Languages and Tools
+
+● HTML
+
+● SCSS
+
+● JavaScript
+
+● React
+
+● React Bootstrap
+
+● Parcel
+
+● Netlify
