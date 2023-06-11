@@ -1,8 +1,10 @@
 # myFlix-client
 
+A live version of the app is available [here](https://myflix-tkr4.onrender.com/).
+
 ## Objective
 
-Using React, build the client-side for an app called myFlix based on its existing server-side code (REST API and database).
+Using React, building the client-side for an app called myFlix based on its existing server-side code (REST API and database).
 
 ## Design Criteria
 
