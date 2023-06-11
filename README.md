@@ -67,4 +67,4 @@ Signup view
 
 ● Parcel
 
-● Netlify
+● Render
