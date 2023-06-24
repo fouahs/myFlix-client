@@ -23,6 +23,12 @@ export const MainView = ({ onLoggedIn }) => {
   };
 
   useEffect(() => {
+    if (movies.length) {
+      setFilteredMovies(movies);
+    }
+  }, [movies])
+
+  useEffect(() => {
     if (!token) {
       return;
     }
